@@ -1,0 +1,55 @@
+#include<iostream>
+using namespace std;
+int  main(){
+     cout<<endl;
+     cout<<endl;
+    cout<<"\t********************************** WELCOME TO THE NUMBER GUESSING GAME **************************************** "<<endl;
+    cout<<endl;
+    cout<<"\t\t------->>>> you will have to guess a number between 1 to 10 <<<<<-------"<<endl;
+    cout<<endl;
+    cout<<"\t\t\t\t Let's start playing and Best of Luck"<<endl;
+
+    int correct_ans = 5;
+    int health = 0;
+    int count = 3;
+    cout<<endl;
+    cout<<"\t\t\tyou will have total 3 chances to guess the correct number "<<endl;
+    int chances = 3;
+    int guess;
+    bool gameover = false ;
+
+    cout<<endl;
+    while(guess!= correct_ans&&!gameover&&count>=0){
+        if(health < chances){
+            cout<<"\t\t \tENTER YOUR NUMBER "<<endl;
+            cout<<"\t\t\t";
+            cin>>guess;
+            health++; 
+            count--;
+        }
+        else{
+            gameover = true ;
+        }
+
+        if(guess==correct_ans){
+            cout<<" \t\t\tCongrats!!. You have successfully guessed the right number  "<<endl;
+            gameover = true;
+            count =-1;
+        }
+
+        if(gameover){
+            cout<<" \t\t\t\tThanks for playing !! "<<endl;
+            cout<<"\t\t\t\tHave a Nice Day!"<<endl;
+            count=-1;
+
+            cout<<endl;     
+        }
+        else{
+            cout<<"\t \t\tyou have choose a wrong number"<<endl;
+            cout<<"\t \t\tNow you have left "<<count<<" chances "<<endl;
+            cout<<endl;  
+        }
+        
+    }
+    return 0;
+}
