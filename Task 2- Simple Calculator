@@ -1,0 +1,37 @@
+#include<iostream>
+using namespace std;
+int main(){
+    int k,b;
+    cout<<"\t Enter the value of first number "<<endl;
+    cout<<"\t";
+    cin>>k;
+    cout<<"\t Enter the value of Second number "<<endl;
+    cout<<"\t" ;
+    cin>>b;
+    cout<<"\t Here, The list of operations that you want to perform "<<endl;
+
+    cout<<" \t\t1. Addition(+) "<<endl;
+    cout<<" \t\t2. Subtraction(-) "<<endl;
+    cout<<" \t\t3. Multiplication(*) "<<endl;
+    cout<<" \t\t4. Division(/) "<<endl;
+    cout<<" \tChoose the number of given operation: "<<endl;
+    int n;
+    cout<<"\t";
+    cin>>n;
+    switch(n){
+        case 1:cout<<" \tThe addition of two number is :"<<k+b<<endl;
+               break;
+        case 2:cout<<" \tThe Substraction of two number is :"<<k-b<<endl;
+               break;
+        case 3:cout<<" \tThe Multiplication of two number is :"<<k*b<<endl;
+               break;
+        case 4:cout<<" \tThe Division of two number is :"<<k/b<<endl;
+               break;
+        default :cout<<"\t No option is choosen  "<<endl;
+               break;                           
+
+    }
+
+    return 0;
+    
+}
