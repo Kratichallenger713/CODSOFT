@@ -1,0 +1,161 @@
+#include<iostream>
+using namespace std;
+
+char boarddigit[3][3] = {{'1','2','3'}, {'4','5','6'},{'7','8','9'}};
+
+//here p1 and p2 is used to denote player 1 and player 2
+string p1 = " ";
+string p2 = " ";
+int row;
+int column;
+char token = 'x';
+bool tie=false;
+
+void functionfirst(){
+
+    cout<<"     |    "<<"   |      "<<endl;
+    cout<<" "<<boarddigit[0][0]<<"   |  "<<boarddigit[0][1]<<"    |  "<<boarddigit[0][2]<<"  "<<endl;
+    cout<<"_____|_______|_______"<<endl;
+    cout<<"     |    "<<"   |      "<<endl;
+    cout<<" "<<boarddigit[1][0]<<"   |  "<<boarddigit[1][1]<<"    |  "<<boarddigit[1][2]<<"  "<<endl;
+    cout<<"_____|_______|_______"<<endl;
+    cout<<"     |    "<<"   |      "<<endl;
+    cout<<" "<<boarddigit[2][0]<<"   |  "<<boarddigit[2][1]<<"    |  "<<boarddigit[2][2]<<"  "<<endl;
+    cout<<"     |    "<<"   |      "<<endl;
+    cout<<endl;
+    cout<<endl;
+    cout<<endl;
+
+}
+
+void functionsecond(){
+     
+     int digit;
+     if(token == 'x'){
+        cout<<p1<<" please enter : ";
+        cin>>digit;
+     }
+     if(token == '0'){
+        cout<<p2<<" please enter : ";
+        cin>>digit;
+     }
+
+     if(digit==1){
+        row = 0;
+        column = 0;
+     }
+     if(digit==2){
+        row = 0;
+        column = 1;
+     }
+     if(digit==3){
+        row = 0;
+        column = 2;
+     }
+     if(digit==4){
+        row = 1;
+        column = 0;
+     }
+     if(digit==5){
+        row = 1;
+        column = 1;
+     }
+     if(digit==6){
+        row = 1;
+        column = 2;
+     }
+     if(digit==7){
+        row = 2;
+        column = 0;
+     }
+     if(digit==8){
+        row = 2;
+        column = 1;
+     }
+     if(digit==9){
+        row = 2;
+        column = 2;
+     }
+     else if(digit<1 ||digit>9){
+        cout<<" Invalid ||"<<endl;
+     }
+    
+    if(token == 'x'&& boarddigit[row][column]!='x'&&boarddigit[row][column]!='0'){
+
+        boarddigit[row][column]='x';
+        token = '0';
+    }
+    else if(token == '0'&& boarddigit[row][column]!='x'&&boarddigit[row][column]!='0'){
+      boarddigit[row][column]='0';
+        token = 'x';
+    }
+    else{
+      cout<<" There is no empty space !"<<endl;
+      functionsecond();
+    }
+
+    functionfirst();
+
+}
+
+bool functionthird(){
+   for(int i=0; i<3; i++){
+      if(boarddigit[i][0]== boarddigit[i][1]&& boarddigit[i][0]==boarddigit[i][2]||boarddigit[0][i]==boarddigit[1][i]&&boarddigit[0][i]==boarddigit[2][i]){
+             return true;
+      }
+   }
+   if(boarddigit[0][0]==boarddigit[1][1]&&boarddigit[1][1]==boarddigit[2][2]||boarddigit[0][2]==boarddigit[1][1]&& boarddigit[1][1]==boarddigit[2][0]){
+      return true;
+   }
+
+   for(int i=0; i<3; i++){
+      for(int j=0; j<3;j++){
+         if(boarddigit[i][j] !='x'&& boarddigit[i][j]!='0'){
+            return false;
+         }
+      }
+   }
+   
+   tie = true;
+   return false;
+
+
+}
+
+
+int main(){
+
+   cout<<" Enter the name of first player :";
+   getline(cin,p1);
+   cout<<endl;
+   cout<<" Enter the name of second player :";
+   getline(cin,p2);
+   cout<<endl;
+    
+   cout<<p1<<" is the  first player :"<<endl;
+   cout<<p2<<" is the second player :"<<endl;
+   cout<<endl;
+   cout<<endl;
+
+       while(!functionthird()){
+         functionfirst();
+         functionsecond();
+         functionthird();
+       }
+
+      if( token=='x'&&tie==false){
+         cout<<p2<<" Wins! "<<endl;
+
+      } 
+         
+      else if(token=='0'&&tie==false) {
+           cout<<p1<<" Wins! "<<endl;
+
+      }
+      else{
+         cout<<" It's a draw!"<<endl;
+      }
+
+
+    return 0;
+}
